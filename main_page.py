@@ -3,15 +3,18 @@
 # Form implementation generated from reading ui file 'main_page.ui',
 # licensing of 'main_page.ui' applies.
 #
-# Created: Mon May 27 18:14:09 2019
+# Created: Mon May 27 20:38:58 2019
 #      by: pyside2-uic  running on PySide2 5.12.0
 #
 # WARNING! All changes made in this file will be lost!
 
 from PySide2 import QtCore, QtGui, QtWidgets
 
-class Ui_main_page(object):
+
+class Ui_main_page(object):    
+        
     def setupUi(self, main_page):
+        
         main_page.setObjectName("main_page")
         main_page.resize(1909, 1005)
         self.tabWidget = QtWidgets.QTabWidget(main_page)
@@ -21,7 +24,7 @@ class Ui_main_page(object):
         font.setPointSize(25)
         font.setUnderline(False)
         self.tabWidget.setFont(font)
-        self.tabWidget.setCursor(QtCore.Qt.PointingHandCursor)
+        self.tabWidget.setCursor(QtCore.Qt.OpenHandCursor)
         self.tabWidget.setFocusPolicy(QtCore.Qt.TabFocus)
         self.tabWidget.setStyleSheet("QTabWidget::tab-bar {\n"
 "   border: 1px solid #3F3838;\n"
@@ -53,7 +56,7 @@ class Ui_main_page(object):
 "                stop:0 rgb(255,255,224), stop: 0.4 rgba(255,251,219, 40), stop:1 rgb(235,119,20));")
         self.dash_board.setObjectName("dash_board")
         self.heart_rate_widgets = QtWidgets.QWidget(self.dash_board)
-        self.heart_rate_widgets.setGeometry(QtCore.QRect(50, 33, 720, 400))
+        self.heart_rate_widgets.setGeometry(QtCore.QRect(180, 33, 720, 400))
         self.heart_rate_widgets.setStyleSheet("border : 2px solid black;\n"
 "border-radius : 15px;\n"
 "background : white;")
@@ -192,13 +195,13 @@ class Ui_main_page(object):
         self.graph_label.setFont(font)
         self.graph_label.setObjectName("graph_label")
         self.steps_widgets = QtWidgets.QWidget(self.dash_board)
-        self.steps_widgets.setGeometry(QtCore.QRect(840, 33, 720, 400))
+        self.steps_widgets.setGeometry(QtCore.QRect(1000, 33, 720, 400))
         self.steps_widgets.setStyleSheet("border : 2px solid black;\n"
 "border-radius : 15px;\n"
 "background : white;")
         self.steps_widgets.setObjectName("steps_widgets")
         self.step_label = QtWidgets.QLabel(self.steps_widgets)
-        self.step_label.setGeometry(QtCore.QRect(60, 30, 101, 41))
+        self.step_label.setGeometry(QtCore.QRect(60, 30, 111, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(25)
@@ -229,14 +232,14 @@ class Ui_main_page(object):
         self.label.setStyleSheet("border : None;")
         self.label.setObjectName("label")
         self.food_widgets = QtWidgets.QWidget(self.dash_board)
-        self.food_widgets.setGeometry(QtCore.QRect(50, 500, 720, 400))
+        self.food_widgets.setGeometry(QtCore.QRect(180, 500, 720, 400))
         self.food_widgets.setStyleSheet("border : 2px solid black;\n"
 "border-radius : 15px;\n"
 "background : white;")
         self.food_widgets.setObjectName("food_widgets")
         self.food_background = QtWidgets.QLabel(self.food_widgets)
         self.food_background.setGeometry(QtCore.QRect(20, 10, 691, 381))
-        self.food_background.setStyleSheet("background-image : url(\"D:/Downloads/IC_Kmitl/Software Engineering Principle/Project/UI/food_background_picture_small.jpg\");\n"
+        self.food_background.setStyleSheet("background-image : url(\"./image/food_background_picture_small.jpg\");\n"
 "\n"
 "background-size: cover;\n"
 "\n"
@@ -310,7 +313,7 @@ class Ui_main_page(object):
 "")
         self.add_Button.setObjectName("add_Button")
         self.quote_widgets = QtWidgets.QWidget(self.dash_board)
-        self.quote_widgets.setGeometry(QtCore.QRect(840, 500, 720, 400))
+        self.quote_widgets.setGeometry(QtCore.QRect(1000, 500, 720, 400))
         self.quote_widgets.setStyleSheet("border : 2px solid black;\n"
 "border-radius : 15px;\n"
 "background : white;")
@@ -351,7 +354,7 @@ class Ui_main_page(object):
         self.tabWidget.setTabToolTip(self.tabWidget.indexOf(self.dash_board), QtWidgets.QApplication.translate("main_page", "Your dashboard", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.summary), QtWidgets.QApplication.translate("main_page", "SUMMARY     ", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.profile), QtWidgets.QApplication.translate("main_page", "PROFILE", None, -1))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.user_name), QtWidgets.QApplication.translate("main_page", "          Sarin Wanichwasin", None, -1))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.user_name), QtWidgets.QApplication.translate("main_page", "                                                                    " + "ABCD" , None, -1))
 
 
 if __name__ == "__main__":

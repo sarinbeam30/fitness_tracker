@@ -30,7 +30,7 @@
     </font>
    </property>
    <property name="cursor">
-    <cursorShape>PointingHandCursor</cursorShape>
+    <cursorShape>OpenHandCursor</cursorShape>
    </property>
    <property name="focusPolicy">
     <enum>Qt::TabFocus</enum>
@@ -91,7 +91,7 @@ QTabBar::tab {
     <widget class="QWidget" name="heart_rate_widgets" native="true">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>180</x>
        <y>33</y>
        <width>720</width>
        <height>400</height>
@@ -352,7 +352,7 @@ border-radius: 15px 15px 15px 15px</string>
     <widget class="QWidget" name="steps_widgets" native="true">
      <property name="geometry">
       <rect>
-       <x>840</x>
+       <x>1000</x>
        <y>33</y>
        <width>720</width>
        <height>400</height>
@@ -368,7 +368,7 @@ background : white;</string>
        <rect>
         <x>60</x>
         <y>30</y>
-        <width>101</width>
+        <width>111</width>
         <height>41</height>
        </rect>
       </property>
@@ -441,7 +441,7 @@ background : white;</string>
     <widget class="QWidget" name="food_widgets" native="true">
      <property name="geometry">
       <rect>
-       <x>50</x>
+       <x>180</x>
        <y>500</y>
        <width>720</width>
        <height>400</height>
@@ -462,7 +462,7 @@ background : white;</string>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-image : url(&quot;D:/Downloads/IC_Kmitl/Software Engineering Principle/Project/UI/food_background_picture_small.jpg&quot;);
+       <string notr="true">background-image : url(&quot;./image/food_background_picture_small.jpg&quot;);
 
 background-size: cover;
 
@@ -615,7 +615,7 @@ border: 2px solid black;
     <widget class="QWidget" name="quote_widgets" native="true">
      <property name="geometry">
       <rect>
-       <x>840</x>
+       <x>1000</x>
        <y>500</y>
        <width>720</width>
        <height>400</height>
@@ -640,7 +640,7 @@ background : white;</string>
    </widget>
    <widget class="QWidget" name="user_name">
     <attribute name="title">
-     <string>          Sarin Wanichwasin</string>
+     <string>                                                                    Sarin Wanichwasin</string>
     </attribute>
    </widget>
   </widget>
