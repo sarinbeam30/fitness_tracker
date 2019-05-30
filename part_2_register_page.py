@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'part_2_register_page.ui',
 # licensing of 'part_2_register_page.ui' applies.
 #
-# Created: Wed May 29 14:33:36 2019
+# Created: Thu May 30 17:27:15 2019
 #      by: pyside2-uic  running on PySide2 5.12.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -13,7 +13,6 @@ from main_page import Ui_main_page
 from register import Register
 
 class Ui_part_2_register_page(object):
-
     def __init__(self):
         self.register = None
 
@@ -37,26 +36,31 @@ class Ui_part_2_register_page(object):
         height = self.height_lineEdit.text()
         sex = str(self.sex_comboBox.currentText())
         birthdate = self.birthdate_dateEdit.date().toString('dd-MMM-yyyy')
-
-        if(weight == " " or height == " "):
+        # print(weight, height, sex, birthdate)
+        
+        if(weight == "" or height == ""):
                 print("Invalid input")
-                self.show_error_dialog
+                self.show_error_dialog()
         else:
                 self.register = Register()
                 self.register.set_weight(weight)
                 self.register.set_height(height)
                 self.register.set_sex(sex)
                 self.register.set_birthdate(birthdate)
-                self.main_page()            
-
+                self.main_page()
+                           
+     
     def setupUi(self, part_2_register_page):
+        self.part_2_register_page = part_2_register_page
         part_2_register_page.setObjectName("part_2_register_page")
-        part_2_register_page.resize(1920, 1080)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Preferred)
+        part_2_register_page.resize(1600, 900)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(3)
+        sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(part_2_register_page.sizePolicy().hasHeightForWidth())
         part_2_register_page.setSizePolicy(sizePolicy)
+        part_2_register_page.setMinimumSize(QtCore.QSize(1600, 900))
+        part_2_register_page.setMaximumSize(QtCore.QSize(1600, 900))
         part_2_register_page.setStyleSheet("background-image: url(./image/black_register_wallpaper.jpg);\n"
 "\n"
 "background-size: contain;\n"
@@ -65,7 +69,7 @@ class Ui_part_2_register_page(object):
 "opacity : 0.5;\n"
 "")
         self.register_label = QtWidgets.QLabel(part_2_register_page)
-        self.register_label.setGeometry(QtCore.QRect(711, 115, 500, 78))
+        self.register_label.setGeometry(QtCore.QRect(600, 85, 500, 78))
         font = QtGui.QFont()
         font.setFamily("Script MT Bold")
         font.setPointSize(38)
@@ -78,7 +82,7 @@ class Ui_part_2_register_page(object):
 "")
         self.register_label.setObjectName("register_label")
         self.first_sentence_label = QtWidgets.QLabel(part_2_register_page)
-        self.first_sentence_label.setGeometry(QtCore.QRect(356, 210, 1208, 67))
+        self.first_sentence_label.setGeometry(QtCore.QRect(215, 190, 1208, 67))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(30)
@@ -88,7 +92,7 @@ class Ui_part_2_register_page(object):
 "background : transparent;")
         self.first_sentence_label.setObjectName("first_sentence_label")
         self.second_sentence_label = QtWidgets.QLabel(part_2_register_page)
-        self.second_sentence_label.setGeometry(QtCore.QRect(502, 280, 1056, 67))
+        self.second_sentence_label.setGeometry(QtCore.QRect(300, 250, 1056, 67))
         font = QtGui.QFont()
         font.setFamily("Segoe UI")
         font.setPointSize(30)
@@ -98,7 +102,7 @@ class Ui_part_2_register_page(object):
 "background : transparent;")
         self.second_sentence_label.setObjectName("second_sentence_label")
         self.weight_label = QtWidgets.QLabel(part_2_register_page)
-        self.weight_label.setGeometry(QtCore.QRect(704, 445, 135, 40))
+        self.weight_label.setGeometry(QtCore.QRect(600, 360, 135, 40))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(20)
@@ -107,7 +111,7 @@ class Ui_part_2_register_page(object):
 "background : transparent;")
         self.weight_label.setObjectName("weight_label")
         self.height_label = QtWidgets.QLabel(part_2_register_page)
-        self.height_label.setGeometry(QtCore.QRect(952, 445, 135, 40))
+        self.height_label.setGeometry(QtCore.QRect(870, 360, 135, 40))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(20)
@@ -116,7 +120,7 @@ class Ui_part_2_register_page(object):
 "background : transparent;")
         self.height_label.setObjectName("height_label")
         self.sex_label = QtWidgets.QLabel(part_2_register_page)
-        self.sex_label.setGeometry(QtCore.QRect(704, 597, 65, 40))
+        self.sex_label.setGeometry(QtCore.QRect(600, 520, 65, 40))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(20)
@@ -125,7 +129,7 @@ class Ui_part_2_register_page(object):
 "background : transparent;")
         self.sex_label.setObjectName("sex_label")
         self.sex_comboBox = QtWidgets.QComboBox(part_2_register_page)
-        self.sex_comboBox.setGeometry(QtCore.QRect(710, 650, 118, 41))
+        self.sex_comboBox.setGeometry(QtCore.QRect(600, 590, 118, 41))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(18)
@@ -138,9 +142,6 @@ class Ui_part_2_register_page(object):
 "\n"
 "QComboBox { background-color: white; color : black;}")
         self.sex_comboBox.setMaxVisibleItems(3)
-
-        self.sex_comboBox.setCurrentIndex(1)
-
         self.sex_comboBox.setInsertPolicy(QtWidgets.QComboBox.InsertAtBottom)
         self.sex_comboBox.setSizeAdjustPolicy(QtWidgets.QComboBox.AdjustToContents)
         self.sex_comboBox.setObjectName("sex_comboBox")
@@ -150,7 +151,7 @@ class Ui_part_2_register_page(object):
         self.sex_comboBox.addItem("")
         self.sex_comboBox.addItem("")
         self.sex_label_2 = QtWidgets.QLabel(part_2_register_page)
-        self.sex_label_2.setGeometry(QtCore.QRect(704, 740, 190, 40))
+        self.sex_label_2.setGeometry(QtCore.QRect(600, 690, 190, 40))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(20)
@@ -159,7 +160,7 @@ class Ui_part_2_register_page(object):
 "background : transparent;")
         self.sex_label_2.setObjectName("sex_label_2")
         self.birthdate_dateEdit = QtWidgets.QDateEdit(part_2_register_page)
-        self.birthdate_dateEdit.setGeometry(QtCore.QRect(710, 790, 225, 50))
+        self.birthdate_dateEdit.setGeometry(QtCore.QRect(600, 760, 225, 50))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(18)
@@ -168,7 +169,8 @@ class Ui_part_2_register_page(object):
         self.birthdate_dateEdit.setCalendarPopup(True)
         self.birthdate_dateEdit.setObjectName("birthdate_dateEdit")
         self.weight_lineEdit = QtWidgets.QLineEdit(part_2_register_page)
-        self.weight_lineEdit.setGeometry(QtCore.QRect(704, 508, 160, 50))
+        self.weight_lineEdit.setGeometry(QtCore.QRect(600, 430, 160, 50))
+        self.weight_lineEdit.setText("")
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(20)
@@ -178,13 +180,14 @@ class Ui_part_2_register_page(object):
 "color : black;\n"
 "border-radius : 17px solid white;\n"
 "")
-        self.weight_lineEdit.setText(" ")
+        
         self.weight_lineEdit.setMaxLength(3)
         self.weight_lineEdit.setFrame(True)
         self.weight_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.weight_lineEdit.setObjectName("weight_lineEdit")
         self.height_lineEdit = QtWidgets.QLineEdit(part_2_register_page)
-        self.height_lineEdit.setGeometry(QtCore.QRect(952, 508, 160, 50))
+        self.height_lineEdit.setGeometry(QtCore.QRect(870, 430, 160, 50))
+        self.height_lineEdit.setText(" ")
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(20)
@@ -194,14 +197,14 @@ class Ui_part_2_register_page(object):
 "color : black;\n"
 "border-radius : 17px solid white;\n"
 "")
-        self.height_lineEdit.setText(" ")
+        self.height_lineEdit.setText("")
         self.height_lineEdit.setMaxLength(3)
         self.height_lineEdit.setFrame(True)
         self.height_lineEdit.setAlignment(QtCore.Qt.AlignCenter)
         self.height_lineEdit.setObjectName("height_lineEdit")
         self.next_Button = QtWidgets.QPushButton(part_2_register_page)
         self.next_Button.clicked.connect(self.next_page)
-        self.next_Button.setGeometry(QtCore.QRect(1490, 900, 347, 61))
+        self.next_Button.setGeometry(QtCore.QRect(1210, 790, 347, 61))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic")
         font.setPointSize(22)
@@ -209,10 +212,11 @@ class Ui_part_2_register_page(object):
         self.next_Button.setCursor(QtCore.Qt.PointingHandCursor)
         self.next_Button.setStyleSheet("color : white;\n"
 "background : #1347EC;\n"
+"border-color : white;\n"
+"border-width : 2.5px;\n"
 "border-radius : 30px;\n"
-"border : 2.5px solid white;")
+"")
         self.next_Button.setObjectName("next_Button")
-
         self.retranslateUi(part_2_register_page)
         QtCore.QMetaObject.connectSlotsByName(part_2_register_page)
 

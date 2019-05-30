@@ -3,7 +3,7 @@
 # Form implementation generated from reading ui file 'main_page.ui',
 # licensing of 'main_page.ui' applies.
 #
-# Created: Thu May 30 15:27:31 2019
+# Created: Thu May 30 16:41:09 2019
 #      by: pyside2-uic  running on PySide2 5.12.0
 #
 # WARNING! All changes made in this file will be lost!
@@ -60,9 +60,9 @@ class Ui_main_page(object):
 "border-radius : 15px;\n"
 "background : white;")
         self.heart_rate_widgets.setObjectName("heart_rate_widgets")
-        self.graph_widget = MplWidget(self.heart_rate_widgets)
-        self.graph_widget.setGeometry(QtCore.QRect(20, 20, 671, 291))
-        self.graph_widget.setObjectName("graph_widget")
+        # self.graph_widget = MplWidget(self.heart_rate_widgets)
+        # self.graph_widget.setGeometry(QtCore.QRect(20, 20, 671, 291))
+        # self.graph_widget.setObjectName("graph_widget")
         self.pushButton_1day = QtWidgets.QPushButton(self.heart_rate_widgets)
         self.pushButton_1day.setGeometry(QtCore.QRect(30, 320, 93, 28))
         self.pushButton_1day.setObjectName("pushButton_1day")
@@ -337,7 +337,7 @@ class Ui_main_page(object):
         self.tabWidget.addTab(self.user_name, "")
 
         self.retranslateUi(main_page)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(main_page)
 
     def retranslateUi(self, main_page):
@@ -368,7 +368,7 @@ class Ui_main_page(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.profile), QtWidgets.QApplication.translate("main_page", "PROFILE", None, -1))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.user_name), QtWidgets.QApplication.translate("main_page", "                                                                                                        Sarin Wanichwasin", None, -1))
 
-from mplwidget import MplWidget
+# from mplwidget import MplWidget
 
 if __name__ == "__main__":
     import sys
