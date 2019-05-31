@@ -7,7 +7,7 @@
 #      by: pyside2-uic  running on PySide2 5.12.0
 #
 # WARNING! All changes made in this file will be lost!
-
+import random
 from PySide2 import QtCore, QtGui, QtWidgets
 
 class Ui_main_page(object):
@@ -16,15 +16,27 @@ class Ui_main_page(object):
         self.get_update_data(self.name_lineEdit.text(), self.email_lineEdit.text(), self.password_lineEdit.text(), self.birth_dateEdit.date().toString('dd-MMM-yyyy'), self.weight_lineEdit.text(), self.height_lineEdit.text(),str(self.sex_comboBox.currentText()))
 
     def get_update_data(self, name, email, password, birthdate, weight, height, gender):
-        print("Name : " + str(name) + " , Email : " + str(email) + " , Password : " + str(password) + " , Birthdate : " + str(birthdate) + " , Weight : " + str(weight) + " , Height : " + str(height) + " , Gender : " + str(gender))
+        # print("Name : " + str(name) + " , Email : " + str(email) + " , Password : " + str(password) + " , Birthdate : " + str(birthdate) + " , Weight : " + str(weight) + " , Height : " + str(height) + " , Gender : " + str(gender))
         pass
+
+    def change_page(self):
+        i = random.randint(1, 5)
+        self.quote_image.setStyleSheet("border-radius : 0px; background-image: url(./image/quote_" + "1" + ".jpg); border : None; background-size: cover;")
+        
+
 
     def setupUi(self, main_page):
         main_page.setObjectName("main_page")
         main_page.resize(1600, 900)
         main_page.setMinimumSize(QtCore.QSize(1600, 900))
         main_page.setMaximumSize(QtCore.QSize(1600, 900))
+
+        #TAB_WIDGET
         self.tabWidget = QtWidgets.QTabWidget(main_page)
+
+        # currentchanged
+        self.tabWidget.currentChanged.connect(self.change_page)
+
         self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1600, 900))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI Light")
@@ -54,6 +66,8 @@ class Ui_main_page(object):
         self.tabWidget.setIconSize(QtCore.QSize(60, 60))
         self.tabWidget.setElideMode(QtCore.Qt.ElideMiddle)
         self.tabWidget.setObjectName("tabWidget")
+
+        #DASHBOARD
         self.dash_board = QtWidgets.QWidget()
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI")
@@ -107,15 +121,18 @@ class Ui_main_page(object):
 "background : white;")
         self.quote_widgets.setObjectName("quote_widgets")
         self.quote_image = QtWidgets.QLabel(self.quote_widgets)
-        self.quote_image.setGeometry(QtCore.QRect(150, 35, 450, 300))
-        self.quote_image.setStyleSheet("border-radius : 0px;\n"
-"background-image: url(./image/quote_1.jpg);\n"
-"border : None;\n"
-"background-size: cover;")
+        # self.quote_image.setGeometry(QtCore.QRect(150, 35, 450, 300))
+        self.quote_image.setGeometry(QtCore.QRect(10, 10, 690, 350))
+#         self.quote_image.setStyleSheet("border-radius : 0px;\n"
+# "background-image: url(./image/quote_1.jpg);\n"
+# "border : None;\n"
+# "background-size: cover;")
         self.quote_image.setText("")
         self.quote_image.setObjectName("quote_image")
 
         self.tabWidget.addTab(self.dash_board, "")
+
+        #Profile
         self.profile = QtWidgets.QWidget()
         self.profile.setStyleSheet("background : qlineargradient(x2:1, y2:1, x0:1, y0:1,\n"
 "                stop:0 rgb(255,255,224), stop: 0.4 rgba(255,251,219, 40), stop:1 rgb(235,119,20));")
@@ -360,10 +377,7 @@ class Ui_main_page(object):
         font.setPointSize(18)
         self.save_Button.setFont(font)
         self.save_Button.setCursor(QtCore.Qt.PointingHandCursor)
-        self.save_Button.setStyleSheet("color : white;\n"
-"background : #1347EC;\n"
-"border-radius : 20px;\n"
-"")
+        self.save_Button.setStyleSheet("QPushButton:hover:!pressed {color : white;background : black; }  QPushButton { color : white; background-color :  #1347EC;}")
         self.save_Button.setObjectName("save_Button")
 
         #BIRTH_DATE
@@ -390,10 +404,9 @@ class Ui_main_page(object):
         
         #SET_DEFAULT_GENDER (MALE == 0)
         self.sex_comboBox.setCurrentIndex(0)
-
-        self.sex_comboBox.addItem("Male")
-        self.sex_comboBox.addItem("Female")
-        self.sex_comboBox.addItem("Other")
+        self.sex_comboBox.addItem("male")
+        self.sex_comboBox.addItem("female")
+        self.sex_comboBox.addItem("other")
         self.sex_comboBox.setGeometry(QtCore.QRect(140, 450, 151, 31))
         font = QtGui.QFont()
         font.setFamily("Segoe UI Light")
@@ -412,7 +425,7 @@ class Ui_main_page(object):
         self.tabWidget.addTab(self.user_name, "")
 
         self.retranslateUi(main_page)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(main_page)
 
     def retranslateUi(self, main_page):
