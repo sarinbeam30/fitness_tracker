@@ -13,6 +13,7 @@ from part_1_register_page import *
 from main_page import Ui_main_page
 from login import Login
 
+
 class Ui_login_page(object):
 
     def __init__(self):
@@ -41,6 +42,7 @@ class Ui_login_page(object):
                 self.ui.setupUi(self.main_page)
                 self.login_page.hide()
                 self.main_page.show()
+
         else:
                 self.show_error_dialog()
 
