@@ -51,8 +51,6 @@ class Ui_login_page(object):
         self.login_page.hide()
         self.register_page.show()
 
-        
-    
     def setupUi(self, login_page):
         self.login_page = login_page
         login_page.setObjectName("login_page")

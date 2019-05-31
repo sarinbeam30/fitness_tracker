@@ -6,8 +6,25 @@ class Ui_main_page(object):
         self.user = user
         self.token = token
 
-#     def click_profile(self):
-#         self.get_user_name
+    def change_page(self, page):
+        # i = random.randint(1, 5)
+        # self.quote_image.setStyleSheet("border-radius : 0px; background-image: url(./image/quote_" + "1" + ".jpg); border : None; background-size: cover;")
+        
+        if(page == 0):
+                print('Dash_board')
+        else:
+                self.birth_dateEdit.setDate(QtCore.QDate(1999, 12, 28))
+                #SET_DEFAULT_EMAIL
+                self.email_lineEdit.setText(self.user.get_user_email())
+                #SET_DEFAULT_NAME
+                self.name_lineEdit.setText(self.user.get_user_name())
+                #SET_DEFAULT_PASSWORD
+                self.password_lineEdit.setText("")
+                #SET_DEFAULT_WEIGHT
+                self.weight_lineEdit.setText(str(self.user.get_user_weight()))
+                #SET_DEFAULT_HEIGHT
+                self.height_lineEdit.setText(str(self.user.get_user_height()))
+                
     
     def save(self):
         self.get_update_data(self.name_lineEdit.text(), 
@@ -29,6 +46,7 @@ class Ui_main_page(object):
         main_page.setMinimumSize(QtCore.QSize(1600, 900))
         main_page.setMaximumSize(QtCore.QSize(1600, 900))
         self.tabWidget = QtWidgets.QTabWidget(main_page)
+        self.tabWidget.currentChanged.connect(self.change_page)
         self.tabWidget.setGeometry(QtCore.QRect(0, 0, 1600, 900))
         font = QtGui.QFont()
         font.setFamily("Yu Gothic UI Light")
@@ -160,8 +178,7 @@ class Ui_main_page(object):
         #NAME
         self.name_lineEdit = QtWidgets.QLineEdit(self.profile_widget_1)
 
-        #SET_DEFAULT_NAME
-        self.name_lineEdit.setText(self.user.get_user_name())
+        
         self.name_lineEdit.setGeometry(QtCore.QRect(140, 170, 380, 41))
         font = QtGui.QFont()
         font.setFamily("Segoe UI Light")
@@ -191,8 +208,7 @@ class Ui_main_page(object):
         font.setPointSize(16)
         self.email_lineEdit.setFont(font)
 
-        #SET_DEFAULT_EMAIL
-        self.email_lineEdit.setText(self.user.get_user_email())
+        
         
         self.email_lineEdit.setStyleSheet("border-radius : 0px;\n"
 "border-style : groove;\n"
@@ -220,8 +236,7 @@ class Ui_main_page(object):
 
         #PASSWORD
         self.password_lineEdit = QtWidgets.QLineEdit(self.profile_widget_1)
-        #SET_DEFAULT_PASSWORD
-        self.password_lineEdit.setText("")
+        
 
         self.password_lineEdit.setGeometry(QtCore.QRect(140, 450, 380, 41))
         font = QtGui.QFont()
@@ -271,8 +286,6 @@ class Ui_main_page(object):
          #WEIGHT
         self.weight_lineEdit = QtWidgets.QLineEdit(self.profile_widget_2)
         
-        #SET_DEFAULT_WEIGHT
-        self.weight_lineEdit.setText(str(self.user.get_user_weight()))
         
         self.weight_lineEdit.setGeometry(QtCore.QRect(140, 310, 100, 30))
         font = QtGui.QFont()
@@ -314,8 +327,7 @@ class Ui_main_page(object):
         #HEIGHT
         self.height_lineEdit = QtWidgets.QLineEdit(self.profile_widget_2)
 
-        #SET_DEFAULT_HEIGHT
-        self.height_lineEdit.setText(str(self.user.get_user_height()))
+        
 
         self.height_lineEdit.setGeometry(QtCore.QRect(370, 310, 100, 30))
         font = QtGui.QFont()
@@ -375,7 +387,6 @@ class Ui_main_page(object):
         self.birth_dateEdit = QtWidgets.QDateEdit(self.profile_widget_2)
 
         #SET_DEFAULT_BIRTH_DATE (Format : yyy , mm, dd)
-        self.birth_dateEdit.setDate(QtCore.QDate(1999, 12, 28))
 
         self.birth_dateEdit.setGeometry(QtCore.QRect(139, 160, 301, 35))
         font = QtGui.QFont()
@@ -395,7 +406,6 @@ class Ui_main_page(object):
         
         #SET_DEFAULT_GENDER (MALE == 0)
         self.sex_comboBox.setCurrentIndex(0)
-
         self.sex_comboBox.addItem("male")
         self.sex_comboBox.addItem("female")
         self.sex_comboBox.addItem("-")
