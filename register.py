@@ -1,5 +1,8 @@
+import requests
+import login
+
 class Register():
-    def __init__(self, name="name", email="email", password="password", weight="weight", height="height", sex="sex", birthdate="birthdate"):
+    def __init__(self, name, email, password, weight, height, sex, birthdate):
         self.name = name
         self.email = email
         self.password = password
@@ -7,48 +10,29 @@ class Register():
         self.height = height
         self.sex = sex
         self.birthdate = birthdate
+        self.status = 404
+        self.base_url = 'http://localhost:8000/api/user/'
+
+    def get_statuscode(self):
+        return self.status
+
+    def user_register(self):
+        """user register w/ email, password and name"""
+        res = requests.post(self.base_url + 'create/', data= {
+            'email': self.email, 
+            'password': self.password,
+            'name': self.name,
+            'weight': self.weight,
+            'height': self.height,
+            'sex': self.sex,
+            'birthdate': self.birthdate
+            }
+        )
+
+        self.status = res.status_code
+        return res
+
+
     
-    def set_weight(self, new_weight):
-        self.weight = new_weight
-    
-    def set_height(self, new_height):
-        self.height = new_height
-    
-    def set_sex(self, new_sex):
-        self.sex = new_sex
-    
-    def set_birthdate(self, new_birthdate):
-        self.birthdate = new_birthdate
-    
-    def get_name(self):
-        return self.name
-    
-    def get_email(self):
-        return self.email
-    
-    def get_password(self):
-        return self.password
-    
-    def get_weight(self):
-        return self.weight
-    
-    def get_height(self):
-        return self.height
-    
-    def get_sex(self):
-        return self.sex 
-    
-    def get_birthdate(self):
-        return self.birthdate 
-    
-    def get_weight(self):
-        return self.weight
-    
-    def get_height(self):
-        return self.height
-    
-    def get_sex(self):
-        return self.sex
-    
-    def get_birth_date(self):
-        return self.birthdate
+
+        

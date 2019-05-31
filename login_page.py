@@ -9,7 +9,7 @@
 # WARNING! All changes made in this file will be lost!
 
 from PySide2 import QtCore, QtGui, QtWidgets
-from part_1_register_page import Ui_part_1_register_page
+from part_1_register_page import *
 from main_page import Ui_main_page
 from login import Login
 
@@ -28,32 +28,33 @@ class Ui_login_page(object):
         self.msg.show()
 
     def log_in_to_your_account(self):
+        
         email = self.email_input.text()
         password = self.password_input.text()
 
-        if(email == " " or email == "" or password == " " or password == ""):
-                print('Error')
-                self.show_error_dialog()
+        self.login = Login(email, password) 
+        self.token = self.login.user_login()
+        if(self.login.get_status_code() == 200): 
+                self.token = self.login.user_login()
+                self.main_page = QtWidgets.QWidget()
+                self.ui = Ui_main_page(self.login, self.token)
+                self.ui.setupUi(self.main_page)
+                login_page.hide()
+                self.main_page.show()
         else:
-                self.login = Login(email, password)
-                print(self.login.email, self.login.password)
-                self.main_page()
+                self.show_error_dialog()
 
     def register_page(self):
         self.register_page = QtWidgets.QWidget()
         self.ui = Ui_part_1_register_page()
         self.ui.setupUi(self.register_page)
-        login_page.hide()
+        self.login_page.hide()
         self.register_page.show()
 
-    def main_page(self):
-        self.main_page = QtWidgets.QWidget()
-        self.ui = Ui_main_page()
-        self.ui.setupUi(self.main_page)
-        login_page.hide()
-        self.main_page.show()
+        
     
     def setupUi(self, login_page):
+        self.login_page = login_page
         login_page.setObjectName("login_page")
         login_page.resize(1600, 900)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)

@@ -1,20 +1,14 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'part_1_register_page.ui',
-# licensing of 'part_1_register_page.ui' applies.
-#
-# Created: Thu May 30 16:57:23 2019
-#      by: pyside2-uic  running on PySide2 5.12.0
-#
-# WARNING! All changes made in this file will be lost!
-
 from PySide2 import QtCore, QtGui, QtWidgets
 from part_2_register_page import Ui_part_2_register_page
 from register import Register
 
+
 class Ui_part_1_register_page(object):
     def __init__(self):
-        self.register = None
+        self.register = None 
+        self.name = None
+        self.email = None
+        self.password = None
 
     def show_error_dialog(self):
         self.msg = QtWidgets.QMessageBox()
@@ -22,28 +16,24 @@ class Ui_part_1_register_page(object):
         self.msg.setText  (" !!! -- Error -- !!! ")
         self.msg.setInformativeText("You forgot to input email or password or both email and password")
         self.msg.setWindowTitle("Error")
-        self.msg.show()
-
-    def part_2_register_page(self):
-        self.part_2_register_page = QtWidgets.QWidget()
-        self.ui = Ui_part_2_register_page()
-        self.ui.setupUi(self.part_2_register_page)
-        self.part_1_register_page.hide()
-        self.part_2_register_page.show()
+        self.msg.show() 
 
     def next_page(self):
-        name = self.name_lineEdit.text()
-        email = self.email_lineEdit.text()
-        password = self.password_lineEdit.text()  
-
-        if(name == " " or email == " " or password == " "):
+        
+        self.name = self.name_lineEdit.text()
+        self.email = self.email_lineEdit.text()
+        self.password = self.password_lineEdit.text()  
+        if(self.name == " " or self.email == " " or self.password == " "):
                 print("Invalid input")
                 self.show_error_dialog()
         
-        else:
-                self.register = Register(name, email, password)
-                print(self.register.get_name(), self.register.get_email(), self.register.get_password(), self.register.get_weight())
-                self.part_2_register_page()
+        else:       
+                self.part_2_register_page = QtWidgets.QWidget()
+                self.ui = Ui_part_2_register_page(self.name, self.email, self.password)
+                self.ui.setupUi(self.part_2_register_page)
+                self.part_1_register_page.hide()
+                self.part_2_register_page.show()
+        
 
     def setupUi(self, part_1_register_page):
         self.part_1_register_page = part_1_register_page

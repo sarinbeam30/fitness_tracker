@@ -1,17 +1,13 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'main_page.ui',
-# licensing of 'main_page.ui' applies.
-#
-# Created: Thu May 30 16:41:09 2019
-#      by: pyside2-uic  running on PySide2 5.12.0
-#
-# WARNING! All changes made in this file will be lost!
-
 from PySide2 import QtCore, QtGui, QtWidgets
 
 class Ui_main_page(object):
+    def __init__(self, user, token):
+        self.user = user
+        self.token = token
+        print(self.user.get_user_name(), self.token)
+    
     def setupUi(self, main_page):
+        
         main_page.setObjectName("main_page")
         main_page.resize(1600, 900)
         main_page.setMinimumSize(QtCore.QSize(1600, 900))

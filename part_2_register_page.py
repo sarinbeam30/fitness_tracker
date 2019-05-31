@@ -1,20 +1,16 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'part_2_register_page.ui',
-# licensing of 'part_2_register_page.ui' applies.
-#
-# Created: Thu May 30 17:27:15 2019
-#      by: pyside2-uic  running on PySide2 5.12.0
-#
-# WARNING! All changes made in this file will be lost!
-
 from PySide2 import QtCore, QtGui, QtWidgets
-from main_page import Ui_main_page
+from main_page import *
+from login_page import *
 from register import Register
+from datetime import datetime
+from login import Login
+
 
 class Ui_part_2_register_page(object):
-    def __init__(self):
-        self.register = None
+    def __init__(self, name, email, password):
+        self.name = name
+        self.email = email
+        self.password = password
 
     def show_error_dialog(self):
         self.msg = QtWidgets.QMessageBox()
@@ -24,33 +20,29 @@ class Ui_part_2_register_page(object):
         self.msg.setWindowTitle("Error")
         self.msg.show()
 
-    def main_page(self):
-        self.main_page = QtWidgets.QWidget()
-        self.ui = Ui_main_page()
-        self.ui.setupUi(self.main_page)
-        part_2_register_page.hide()
-        self.main_page.show()
-
+        
     def next_page(self):
+        time = self.birthdate_dateEdit.date()
         weight = self.weight_lineEdit.text()
         height = self.height_lineEdit.text()
         sex = str(self.sex_comboBox.currentText())
-        birthdate = self.birthdate_dateEdit.date().toString('dd-MMM-yyyy')
-        # print(weight, height, sex, birthdate)
+        birthdate = str(time.year())+'-'+str(time.month())+'-'+str(time.day())
         
         if(weight == "" or height == ""):
                 print("Invalid input")
                 self.show_error_dialog()
         else:
-                self.register = Register()
-                self.register.set_weight(weight)
-                self.register.set_height(height)
-                self.register.set_sex(sex)
-                self.register.set_birthdate(birthdate)
-                self.main_page()
-                           
+                data = Register(self.name, self.email, self.password, weight, height, sex, birthdate)
+                data.user_register()
+                self.login_page = QtWidgets.QWidget()
+                self.ui = Ui_login_page()
+                self.ui.setupUi(self.login_page)
+                self.part_2_register_page.hide()
+                self.login_page.show()
+
      
     def setupUi(self, part_2_register_page):
+        
         self.part_2_register_page = part_2_register_page
         part_2_register_page.setObjectName("part_2_register_page")
         part_2_register_page.resize(1600, 900)
