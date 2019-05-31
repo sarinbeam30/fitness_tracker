@@ -39,7 +39,7 @@ class Ui_login_page(object):
                 self.main_page = QtWidgets.QWidget()
                 self.ui = Ui_main_page(self.login, self.token)
                 self.ui.setupUi(self.main_page)
-                login_page.hide()
+                self.login_page.hide()
                 self.main_page.show()
         else:
                 self.show_error_dialog()

@@ -25,7 +25,8 @@ class Register():
             'weight': self.weight,
             'height': self.height,
             'sex': self.sex,
-            'birthdate': self.birthdate
+            'birthdate': self.birthdate,
+            'goal':"0"
             }
         )
 
