@@ -36,13 +36,10 @@ class Ui_login_page(object):
         self.login = Login(email, password) 
         self.token = self.login.user_login()
         if(self.login.get_status_code() == 200): 
-                
                 self.token = self.login.user_login()
-                self.main_page = QtWidgets.QWidget()
-                self.ui = MainWidget(self.login, self.token)
+                self.ui = MainWidget(self.login, self)
                 self.login_page.hide()
                 self.ui.show()
-
         else:
                 self.show_error_dialog()
 

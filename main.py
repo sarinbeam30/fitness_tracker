@@ -15,14 +15,16 @@ import random
 from login import Login
 from nutrition import Nutrition
 
+# class PassUser()
+
 # ------------------ MainWidget ------------------
 class MainWidget(QWidget):
-    def __init__(self, user, token, parent = None):
-        QWidget.__init__(self, parent=None)
-        self.user = Login("admin@admin.com", "admin")
+    def __init__(self, user, parent = None):
+        self.user = user
         self.token = self.user.user_login()
         
-
+        QWidget.__init__(self, parent=None)
+        
         self.USER_ID = '22DG4C'
         self.CLIENT_SECRET = '940862ba343ec9ed386b999e689560d4'
         self.yesterday = str((datetime.datetime.now() - datetime.timedelta(days=1)).strftime("%Y-%m-%d"))
@@ -80,6 +82,7 @@ class MainWidget(QWidget):
 
         #adjust
         self.ui.tabWidget.setCurrentIndex(0)
+        # self.ui.user_name.setText(self.user.get_user_name())
         self.ui.tabWidget.currentChanged.connect(self.change_page)
         self.ui.name_lineEdit_3.setText("default_name")
         self.ui.email_lineEdit_3.setText("default_email")
@@ -94,6 +97,10 @@ class MainWidget(QWidget):
         self.ui.sex_comboBox_3.addItem("female")
         self.ui.sex_comboBox_3.addItem("-")
 
+        self.ui.tabWidget.setTabText(self.ui.tabWidget.indexOf(self.ui.user_name), QApplication.translate("main_page", self.user.get_user_name(), None, -1))
+
+    # def make_token(self):
+        
     def sex_number(self):
         if self.user.get_user_sex() == 0:
             return int(0)
@@ -140,8 +147,6 @@ class MainWidget(QWidget):
                 self.ui.weight_lineEdit_3.setText(str(self.user.get_user_weight()))
                 #SET_DEFAULT_HEIGHT
                 self.ui.height_lineEdit_3.setText(str(self.user.get_user_height()))
-                
-
 
     def autenticate(self):
         self.server = Oauth2.OAuth2Server(self.USER_ID, self.CLIENT_SECRET)      
@@ -190,7 +195,7 @@ class MainWidget(QWidget):
         if (self.step_gain * 0.762) / 1000 < 1:
             self.ui.label_current.setText("Current distance :  " + str(self.step_gain) + " m.")
         elif (self.step_gain * 0.762) / 1000 > 1:
-            self.ui.label_current.setText("Current distance :  " + str(self.step_gain) + " km.")
+            self.ui.label_current.setText("Current distance :  " + str(self.step_gain / 1000) + " km.")
         self.ui.label_cal_burn.setText("Calrorie burned :  " + str(((self.step_gain * 0.762) / 1000) * 54) + " cal.")
         self.ui.progress_widget.canvas.draw()
     def update_graph1day(self):
