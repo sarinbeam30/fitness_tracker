@@ -56,6 +56,7 @@ class MainWidget(QWidget):
         self.ui.weight_picture_5.setPixmap(QPixmap("image/weight_picture.png"))
         self.ui.height_picture_3.setPixmap(QPixmap("image/height_picture.svg"))
         self.ui.weight_picture_6.setPixmap(QPixmap("image/gender_picture.png"))
+        self.ui.setWindowTitle("Fitness Tracker")
 
 
         self.update_graph1day()
@@ -235,7 +236,7 @@ class MainWidget(QWidget):
         for label in (self.ui.graph_widget.canvas.axes.get_xticklabels() + self.ui.graph_widget.canvas.axes.get_yticklabels()):
             # label.set_fontproperties(self.font_prop)
             label.set_fontsize(8)
-        self.ui.graph_widget.canvas.axes.set_title('daily')
+        self.ui.graph_widget.canvas.axes.set_title('Your steps in one day')
         self.ui.graph_widget.canvas.draw()
 
     def update_graph1week(self):
@@ -253,7 +254,7 @@ class MainWidget(QWidget):
         for label in (self.ui.graph_widget.canvas.axes.get_xticklabels() + self.ui.graph_widget.canvas.axes.get_yticklabels()):
             # label.set_fontproperties(self.font_prop)
             label.set_fontsize(8)
-        self.ui.graph_widget.canvas.axes.set_title('daily')
+        self.ui.graph_widget.canvas.axes.set_title('Your steps in one week')
         self.ui.graph_widget.canvas.draw()
 
     def update_graph1month(self):
@@ -271,7 +272,7 @@ class MainWidget(QWidget):
         for label in (self.ui.graph_widget.canvas.axes.get_xticklabels() + self.ui.graph_widget.canvas.axes.get_yticklabels()):
             # label.set_fontproperties(self.font_prop)
             label.set_fontsize(8)
-        self.ui.graph_widget.canvas.axes.set_title('daily')
+        self.ui.graph_widget.canvas.axes.set_title('Your steps in one month')
         self.ui.graph_widget.canvas.draw()
         
     def update_graph3month(self):
@@ -295,7 +296,7 @@ class MainWidget(QWidget):
         for label in (self.ui.graph_widget.canvas.axes.get_xticklabels() + self.ui.graph_widget.canvas.axes.get_yticklabels()):
             # label.set_fontproperties(self.font_prop)
             label.set_fontsize(8)
-        self.ui.graph_widget.canvas.axes.set_title('daily')
+        self.ui.graph_widget.canvas.axes.set_title('Your steps in three month')
         self.ui.graph_widget.canvas.draw()
 
     def extend_graph(self):
