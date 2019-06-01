@@ -425,7 +425,7 @@ background : white;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="waterq.qrc">:/newPrefix/water4crop.png</pixmap>
+       <pixmap>:/newPrefix/water4crop.png</pixmap>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -549,7 +549,7 @@ background : white;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="testing.qrc">:/newPrefix/food2.png</pixmap>
+       <pixmap>:/newPrefix/food2.png</pixmap>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -742,10 +742,11 @@ background : white;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border : none;</string>
+       <string notr="true">border : none;
+background-image : url(./image/profile_picture.png)</string>
       </property>
       <property name="text">
-       <string></string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="name_label_3">
@@ -860,10 +861,11 @@ border-color : rgb(128,128,128);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border : none;</string>
+       <string notr="true">background-image : url(./image/email_picture.png);
+border : none;</string>
       </property>
       <property name="text">
-       <string></string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="password_label_3">
@@ -930,10 +932,11 @@ border-color : rgb(128,128,128);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border : none;</string>
+       <string notr="true">background-image : url(./image/password_picture.png);
+border : none;</string>
       </property>
       <property name="text">
-       <string></string>
+       <string/>
       </property>
      </widget>
     </widget>
@@ -1044,10 +1047,11 @@ border-color : rgb(128,128,128);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border : none;</string>
+       <string notr="true">background-image : url(./image/date_picture.png);
+border : none;</string>
       </property>
       <property name="text">
-       <string></string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="weight_picture_5">
@@ -1066,10 +1070,11 @@ border-color : rgb(128,128,128);</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border : none;</string>
+       <string notr="true">background-image : url(./image/weight_picture.png);
+border : none;</string>
       </property>
       <property name="text">
-       <string></string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="height_label_3">
@@ -1147,7 +1152,7 @@ background-image : url(&quot;./image/height_picture.png&quot;);
 </string>
       </property>
       <property name="text">
-       <string></string>
+       <string/>
       </property>
      </widget>
      <widget class="QLabel" name="gender_label_3">
@@ -1189,10 +1194,11 @@ background-image : url(&quot;./image/height_picture.png&quot;);
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border : none;</string>
+       <string notr="true">border : none;
+background-image : url(./image/gender_picture.png);</string>
       </property>
       <property name="text">
-       <string></string>
+       <string/>
       </property>
      </widget>
      <widget class="QPushButton" name="save_Button_3">
@@ -1302,9 +1308,9 @@ border-color : rgb(128,128,128);</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="testing.qrc"/>
   <include location="waterq.qrc"/>
   <include location="retest.qrc"/>
+  <include location="testing.qrc"/>
  </resources>
  <connections/>
 </ui>

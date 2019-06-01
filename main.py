@@ -48,6 +48,16 @@ class MainWidget(QWidget):
 
         self.ui.label_2.setPixmap(QPixmap("image/food2.png"))
         self.ui.label_5.setPixmap(QPixmap("image/water4crop.png"))
+
+        self.ui.profile_picture_3.setPixmap(QPixmap("image/profile_picture.png"))
+        self.ui.email_picture_3.setPixmap(QPixmap("image/email_picture.png"))
+        self.ui.password_picture_3.setPixmap(QPixmap("image/password_picture.png"))
+        self.ui.birth_date_picture_3.setPixmap(QPixmap("image/date_picture.png"))
+        self.ui.weight_picture_5.setPixmap(QPixmap("image/weight_picture.png"))
+        self.ui.height_picture_3.setPixmap(QPixmap("image/height_picture.svg"))
+        self.ui.weight_picture_6.setPixmap(QPixmap("image/gender_picture.png"))
+
+
         self.update_graph1day()
         self.ui.pushButton_1day.clicked.connect(self.update_graph1day)
         self.ui.pushButton_7days.clicked.connect(self.update_graph1week)
