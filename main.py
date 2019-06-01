@@ -13,6 +13,7 @@ import MplWidget as Mpl
 import math
 import random
 from login import Login
+from nutrition import Nutrition
 
 # ------------------ MainWidget ------------------
 class MainWidget(QWidget):
@@ -72,7 +73,6 @@ class MainWidget(QWidget):
         self.ui.pushButton_add_water.clicked.connect(self.add_water)
 
         #goal data
-        self.step_count = 0
         self.goal_step = self.user.get_user_goal()
         self.step_gain = self.step_count
         self.update_goal_graph()
@@ -102,7 +102,7 @@ class MainWidget(QWidget):
                              str(self.ui.sex_comboBox_3.currentText()))
 
     def get_update_data(self, name, email, password, birthdate, weight, height, gender):
-        print("Name : " + str(name) + " , Email : " + str(email) + " , Password : " + str(password) + " , Birthdate : " + str(birthdate) + " , Weight : " + str(weight) + " , Height : " + str(height) + " , Gender : " + str(gender))
+        # print("Name : " + str(name) + " , Email : " + str(email) + " , Password : " + str(password) + " , Birthdate : " + str(birthdate) + " , Weight : " + str(weight) + " , Height : " + str(height) + " , Gender : " + str(gender))
         self.user.user_change_profile(email, password, name, weight, height, gender)
         self.user.set_user_birthdate(name, birthdate)
         self.user.set_user_gender(name, gender)
@@ -113,9 +113,11 @@ class MainWidget(QWidget):
         i = random.randint(1, 5)
         self.ui.quote_image_3.setStyleSheet("border-radius : 0px; background-image: url(./image/quote_" + str(i) + ".jpg); border : None; background-size: cover;")
         if(page == 0):
-                print('Dash_board')
+               
+                self.update_goal_graph()
         else:
-                self.ui.birth_dateEdit_3.setDate(QDate(1999, 12, 28))
+                getDate = self.user.get_user_birthdate()
+                self.ui.birth_dateEdit_3.setDate(QDate(int(getDate[0]), int(getDate[1]), int(getDate[2])))
                 #SET_DEFAULT_EMAIL
                 self.ui.email_lineEdit_3.setText(self.user.get_user_email())
                 #SET_DEFAULT_NAME
@@ -126,6 +128,7 @@ class MainWidget(QWidget):
                 self.ui.weight_lineEdit_3.setText(str(self.user.get_user_weight()))
                 #SET_DEFAULT_HEIGHT
                 self.ui.height_lineEdit_3.setText(str(self.user.get_user_height()))
+                
 
 
     def autenticate(self):
@@ -374,6 +377,8 @@ class MainWidget(QWidget):
     def add_food_log(self):
         food_name = self.calUi.lineEdit_food.text()
         cals = self.calUi.lineEdit_cals.text()
+        foodCreate = Nutrition(self.token)
+        foodCreate.nutrition_create(food_name, cals)
         if food_name == "" or cals == "":
             dialog = QDialog(self)
             layout = QVBoxLayout()
@@ -421,7 +426,7 @@ class MainWidget(QWidget):
         dialog.setLayout(layout)
         dialog.resize(220,100)
         dialog.setMinimumSize(220,100)
-        dialog.setFont(font)
+        # dialog.setFont(font)
         dialog.show()
 
 # if __name__ == "__main__":

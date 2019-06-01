@@ -68,8 +68,9 @@ class Login:
 
     def get_user_birthdate(self):
         res = requests.get(self.base_url + 'me/', headers=self.headers)
+        date = res.json()['birth']
 
-        return res.json()['birth']
+        return date.split('-')
 
     def get_user_sex(self):
         res = requests.get(self.base_url + 'me/', headers=self.headers)
@@ -106,7 +107,6 @@ class Login:
             }
         )
 
-
     def set_user_gender(self, name, gender):
         res = requests.patch(self.base_url + 'me/', headers=self.headers, data= {
             "email": self.email,
@@ -115,7 +115,9 @@ class Login:
             }
         )
 
-# a = Login('tarn@gmail.com', 'admin')
+    
+
+
+# a = Login('admin@admin.com', 'admin')
 # a.user_login()
-# a.set_user_birthdate('tarrz','2000-06-22')
-# print(a.get_user_profile())
+# print(a.get_user_birthdate())
