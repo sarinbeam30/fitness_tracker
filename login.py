@@ -75,7 +75,7 @@ class Login:
     def get_user_sex(self):
         res = requests.get(self.base_url + 'me/', headers=self.headers)
 
-        return res.json()['sex']
+        return res.json()['gender']
 
     def user_change_profile(self, email, password, name, weight, height, gender):
 

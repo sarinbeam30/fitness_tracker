@@ -89,8 +89,20 @@ class MainWidget(QWidget):
         self.ui.save_Button_3.clicked.connect(self.save)
         self.ui.save_Button_3.setStyleSheet("QPushButton:hover:!pressed {color : white;background : black; }  QPushButton { color : white; background-color :  #1347EC;}")
         self.ui.birth_dateEdit_3.setDate(QDate(1999, 12, 28))
-        self.ui.sex_comboBox_3.setCurrentIndex(0)
+        self.ui.sex_comboBox_3.setCurrentIndex(self.sex_number())
+        self.ui.sex_comboBox_3.addItem("male")
+        self.ui.sex_comboBox_3.addItem("female")
+        self.ui.sex_comboBox_3.addItem("-")
 
+    def sex_number(self):
+        if self.user.get_user_sex() == 0:
+            return int(0)
+        elif self.user.get_user_sex() == 1:
+            return int(1)
+        elif self.user.get_user_sex() == 2:
+            return int(2)
+        else:
+            return int(0)
 
     def save(self):
         self.get_update_data(self.ui.name_lineEdit_3.text(),
