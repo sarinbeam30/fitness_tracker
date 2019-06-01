@@ -98,6 +98,15 @@ class Login:
             }
         )
 
+    def set_user_goal(self, name, goal):
+        res = requests.patch(self.base_url + 'me/', headers=self.headers, data= {
+            "email": self.email,
+            "name": name,
+            "goal": goal
+            }
+        )
+
+
     def set_user_gender(self, name, gender):
         res = requests.patch(self.base_url + 'me/', headers=self.headers, data= {
             "email": self.email,

@@ -10,9 +10,9 @@
 
 from PySide2 import QtCore, QtGui, QtWidgets
 from part_1_register_page import *
-from main_page import Ui_main_page
+from main import MainWidget
 from login import Login
-
+import sys
 
 class Ui_login_page(object):
 
@@ -36,12 +36,12 @@ class Ui_login_page(object):
         self.login = Login(email, password) 
         self.token = self.login.user_login()
         if(self.login.get_status_code() == 200): 
+                
                 self.token = self.login.user_login()
                 self.main_page = QtWidgets.QWidget()
-                self.ui = Ui_main_page(self.login, self.token)
-                self.ui.setupUi(self.main_page)
+                self.ui = MainWidget(self.login, self.token)
                 self.login_page.hide()
-                self.main_page.show()
+                self.ui.show()
 
         else:
                 self.show_error_dialog()
@@ -212,4 +212,5 @@ if __name__ == "__main__":
     ui.setupUi(login_page)
     login_page.show()
     sys.exit(app.exec_())
+    
 
