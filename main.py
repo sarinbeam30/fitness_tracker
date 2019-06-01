@@ -97,7 +97,7 @@ class MainWidget(QWidget):
         self.ui.sex_comboBox_3.addItem("female")
         self.ui.sex_comboBox_3.addItem("-")
 
-        self.ui.tabWidget.setTabText(self.ui.tabWidget.indexOf(self.ui.user_name), QApplication.translate("main_page", self.user.get_user_name(), None, -1))
+        self.ui.tabWidget.setTabText(self.ui.tabWidget.indexOf(self.ui.user_name), QApplication.translate("main_page", "                                                                                                                                                                                  " + self.user.get_user_name(), None, -1))
 
     # def make_token(self):
         
@@ -196,7 +196,7 @@ class MainWidget(QWidget):
             self.ui.label_current.setText("Current distance :  " + str(self.step_gain) + " m.")
         elif (self.step_gain * 0.762) / 1000 > 1:
             self.ui.label_current.setText("Current distance :  " + str(self.step_gain / 1000) + " km.")
-        self.ui.label_cal_burn.setText("Calrorie burned :  " + str(((self.step_gain * 0.762) / 1000) * 54) + " cal.")
+        self.ui.label_cal_burn.setText("Calrorie burned : " + "%.2f" % (((self.step_gain * 0.762) / 1000) * 54) + " cal.")
         self.ui.progress_widget.canvas.draw()
     def update_graph1day(self):
         step_hr = []
@@ -433,11 +433,12 @@ class MainWidget(QWidget):
         dialog = QDialog(self)
         layout = QHBoxLayout()
         label = QLabel(self)
-        water_input = QLineEdit(self)
+        self.water_input = QLineEdit(self)
         add_button = QPushButton("ADD")
+        add_button.clicked.connect(self.update_water)
         label.setText("ml : ")
         layout.addWidget(label)
-        layout.addWidget(water_input)
+        layout.addWidget(self.water_input)
         layout.addWidget(add_button)
         dialog.setWindowTitle("Add Water")
         dialog.setLayout(layout)
@@ -445,6 +446,27 @@ class MainWidget(QWidget):
         dialog.setMinimumSize(220,100)
         # dialog.setFont(font)
         dialog.show()
+        
+    def update_water(self):
+        if self.water_input.text() == "":
+            dialog = QDialog(self)
+            layout = QVBoxLayout()
+            label = QLabel(self)
+            result = "ERROR: empty input"
+            label.setText(result)
+            layout.addWidget(label)
+            dialog.setWindowTitle("ERROR")
+            dialog.setLayout(layout)
+            dialog.resize(150,100)
+            dialog.setMinimumSize(150,100)
+            dialog.show()
+        else:
+            self.water_gain += float(self.water_input.text())
+            self.water_max -= float(self.water_input.text())
+            if self.water_max <= 0:
+                self.water_max = 0
+            self.ui.label_water_in.setText(str(self.water_gain) + " : ml")
+            self.ui.label_water_left.setText(str(self.water_max) + " : ml left")
 
 # if __name__ == "__main__":
 #     app = QApplication([])
